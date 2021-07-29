@@ -16,6 +16,7 @@
   },
   "babel": {
     "presets": [
+      "@virtualpatterns/babel-preset-mablung-makefile",
       [
         "@babel/preset-env",
         {
@@ -36,15 +37,8 @@
   },
   "description": "TBD",
   "eslintConfig": {
-    "env": {
-      "es6": true,
-      "node": true
-    }
+    "extends": "@virtualpatterns/eslint-config-mablung-makefile"
   },
-  "eslintIgnore": [
-    "source/sandbox",
-    "source/test"
-  ],
   "exports": {
     ".": "./release/index.cjs",
     "./package.json": "./package.json"
@@ -62,15 +56,12 @@
   "version": "0.0.1-0",
   "dependencies": {
     "@pwn/is": "^1.0.2",
-    "@virtualpatterns/mablung-babel-plugin-replace-identifier": "0.0.1-31",
-    "@virtualpatterns/mablung-babel-plugin-replace-string-literal": "0.0.1-27",
-    "@virtualpatterns/mablung-makefile-environment": "0.0.1-28",
     "jsonpath": "^1.1.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.14.8",
-    "@virtualpatterns/mablung-babel-plugin-replace-identifier": "0.0.1-31",
-    "@virtualpatterns/mablung-babel-plugin-replace-string-literal": "0.0.1-27",
+    "@virtualpatterns/babel-preset-mablung-makefile": "0.0.1-1",
+    "@virtualpatterns/eslint-config-mablung-makefile": "0.0.1-12",
     "@virtualpatterns/mablung-makefile-environment": "0.0.1-28",
     "ava": "^3.15.0"
   },
