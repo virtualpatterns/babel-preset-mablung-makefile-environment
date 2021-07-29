@@ -29,7 +29,9 @@
   },
   "c8": {
     "all": true,
-    "exclude": [],
+    "exclude": [
+      "release/sandbox"
+    ],
     "reporter": [
       "html"
     ],
