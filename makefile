@@ -1,6 +1,6 @@
 
-ifndef mablung-makefile-path
-export mablung-makefile-path := $(shell npx mablung-makefile get-path)
+ifndef mablung-makefile-environment-path
+export mablung-makefile-environment-path := $(shell npx mablung-makefile-environment get-path)
 endif
 
-include $(mablung-makefile-path)
+include $(mablung-makefile-environment-path)
