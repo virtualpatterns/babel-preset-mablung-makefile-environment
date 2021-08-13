@@ -4,3 +4,11 @@ export mablung-makefile-environment-path := $(shell npx mablung-makefile-environ
 endif
 
 include $(mablung-makefile-environment-path)
+
+ifndef current-folder
+
+pre-build::
+	$(if $(verbose),@echo update .... package.json)
+	@npx mablung-makefile-environment update-package
+
+endif

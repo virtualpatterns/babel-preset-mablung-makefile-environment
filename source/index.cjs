@@ -53,7 +53,7 @@ module.exports = function () {
 //     "commonjs": {
 //       "plugins": [
 //         [
-//           "@virtualpatterns/mablung-babel-plugin-replace-identifier",
+//           "@virtualpatterns/babel-plugin-mablung-replace-identifier",
 //           {
 //             "rule": [
 //               {
@@ -68,7 +68,7 @@ module.exports = function () {
 //           }
 //         ],
 //         [
-//           "@virtualpatterns/mablung-babel-plugin-replace-string-literal",
+//           "@virtualpatterns/babel-plugin-mablung-replace-string-literal",
 //           {
 //             "rule": [
 //               {
@@ -94,7 +94,7 @@ module.exports = function () {
 //       "plugins": [
 //         "@babel/plugin-syntax-import-meta",
 //         [
-//           "@virtualpatterns/mablung-babel-plugin-replace-identifier",
+//           "@virtualpatterns/babel-plugin-mablung-replace-identifier",
 //           {
 //             "rule": [
 //               {
