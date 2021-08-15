@@ -1,142 +1,96 @@
+const Clone = require('clone')
 const Is = require('@pwn/is')
-const Path = require('jsonpath')
 
-module.exports = function () {
+const Package = require('../package.json')
 
-  let configuration = require('@virtualpatterns/mablung-makefile-environment/babel.json')
+module.exports = function (api, option) {
 
-  let plugins = Path.query(configuration, '$..plugins')
+  // {
+  //   "presets": [
+  //     [
+  //       "@virtualpatterns/babel-preset-mablung-makefile",
+  //       {
+  //         "header": {
+  //           "exclude": [
+  //             "source/esmodule/sandbox",
+  //             "source/esmodule/test",
+  //             "source/test",
+  //             "source/index.js"
+  //           ]
+  //         }
+  //       }
+  //     ]
+  //   ],
+  //   "env": {
+  //     "commonjs": {
+  //       "plugins": [
+  //         [
+  //           "@virtualpatterns/babel-plugin-mablung-replace-identifier",
+  //           {
+  //           }
+  //         ],
+  //         [
+  //           "@virtualpatterns/babel-plugin-mablung-replace-string-literal",
+  //           {
+  //           }
+  //         ]
+  //       ],
+  //       "presets": [
+  //           [
+  //             "@babel/preset-env",
+  //             {
+  //             }
+  //           ]
+  //         ]
+  //     },
+  //     "esmodule": {
+  //       "plugins": [
+  //         "@babel/plugin-syntax-import-meta",
+  //         [
+  //           "@virtualpatterns/babel-plugin-mablung-replace-identifier",
+  //           {
+  //           }
+  //         ]
+  //       ]
+  //     }
+  //   }
+  // }
 
-  plugins.forEach((plugins) => {
+  let configuration = Clone(Package.babel)
+  // console.dir(configuration, { 'depth': null })
 
-    plugins.forEach((plugin, index, plugins) => {
+  let name = null
+  name = configuration.presets[0][0]
+  // console.log(`configuration.presets[0][0] = require('${name}')`)
+  configuration.presets[0][0] = require(name)
 
-      if (Is.array(plugin)) {
-        // console.log(`plugin[0] = ${plugin[0] == 'importMeta' ? `'${plugin[0]}'` : `require('${plugin[0]}')`}`)
-        plugin[0] = plugin[0] == 'importMeta' ? plugin[0] : require(plugin[0])
-      } else {
-        // console.log(`plugins[${index}] = ${plugin == 'importMeta' ? `'${plugin}'` : `require('${plugin}')`}`)
-        plugins[index] = plugin == 'importMeta' ? plugin : require(plugin)
-      }
+  let exclude = null
+  exclude = option.header?.exclude || []
+  exclude = Is.array(exclude) ? exclude : [ exclude ]
 
-    })
+  // console.log(`configuration.presets[0][1].header.exclude = ${exclude.length == 0 ? '[]' : `['${exclude.join('\', \'')}']`}`)
+  configuration.presets[0][1].header.exclude = exclude
 
-  })
+  name = configuration.env.commonjs.plugins[0][0]
+  // console.log(`configuration.env.commonjs.plugins[0][0] = require('${name}')`)
+  configuration.env.commonjs.plugins[0][0] = require(name)
 
-  let presets = Path.query(configuration, '$..presets')
+  name = configuration.env.commonjs.plugins[1][0]
+  // console.log(`configuration.env.commonjs.plugins[1][0] = require('${name}')`)
+  configuration.env.commonjs.plugins[1][0] = require(name)
 
-  presets.forEach((presets) => {
+  name = configuration.env.commonjs.presets[0][0]
+  // console.log(`configuration.env.commonjs.presets[0][0] = require('${name}')`)
+  configuration.env.commonjs.presets[0][0] = require(name)
 
-    presets.forEach((preset, index, presets) => {
+  name = configuration.env.esmodule.plugins[0]
+  // console.log(`configuration.env.esmodule.plugins[0] = require('${name}')`)
+  configuration.env.esmodule.plugins[0] = require(name)
 
-      if (Is.array(preset)) {
-        // console.log(`preset[0] = require('${preset[0]}')`)
-        preset[0] = require(preset[0])
-      } else {
-        // console.log(`presets[${index}] = require('${preset}')`)
-        presets[index] = require(preset)
-      }
-
-    })
-
-  })
+  name = configuration.env.esmodule.plugins[1][0]
+  // console.log(`configuration.env.esmodule.plugins[1][0] = require('${name}')`)
+  configuration.env.esmodule.plugins[1][0] = require(name)
 
   return configuration
 
 }
-
-// {
-//   "presets": [
-//     "@virtualpatterns/babel-preset-mablung-makefile"
-//   ],
-//     "env": {
-//     "commonjs": {
-//       "plugins": [
-//         [
-//           "@virtualpatterns/babel-plugin-mablung-replace-identifier",
-//           {
-//             "rule": [
-//               {
-//                 "searchFor": "__filePath",
-//                 "replaceWith": "__filename"
-//               },
-//               {
-//                 "searchFor": "__require",
-//                 "replaceWith": "require"
-//               }
-//             ]
-//           }
-//         ],
-//         [
-//           "@virtualpatterns/babel-plugin-mablung-replace-string-literal",
-//           {
-//             "rule": [
-//               {
-//                 "searchFor": "^(\\.{1,2}\\/.*?)\\.js$",
-//                 "replaceWith": "$1.cjs"
-//               }
-//             ]
-//           }
-//         ]
-//       ],
-//         "presets": [
-//           [
-//             "@babel/preset-env",
-//             {
-//               "targets": {
-//                 "node": "current"
-//               }
-//             }
-//           ]
-//         ]
-//     },
-//     "esmodule": {
-//       "plugins": [
-//         "@babel/plugin-syntax-import-meta",
-//         [
-//           "@virtualpatterns/babel-plugin-mablung-replace-identifier",
-//           {
-//             "rule": [
-//               {
-//                 "searchFor": "__filePath",
-//                 "replaceWith": "__importIdentifier.fileURLToPath(import.meta.url)",
-//                 "parserOption": {
-//                   "plugins": [
-//                     "importMeta"
-//                   ],
-//                   "sourceType": "module"
-//                 },
-//                 "addImport": [
-//                   {
-//                     "type": "default",
-//                     "source": "url",
-//                     "option": {
-//                       "nameHint": "URL"
-//                     }
-//                   }
-//                 ]
-//               },
-//               {
-//                 "searchFor": "__require",
-//                 "replaceWith": "__importIdentifier(import.meta.url)",
-//                 "parserOption": {
-//                   "plugins": [
-//                     "importMeta"
-//                   ],
-//                   "sourceType": "module"
-//                 },
-//                 "addImport": [
-//                   {
-//                     "type": "named",
-//                     "name": "createRequire",
-//                     "source": "module"
-//                   }
-//                 ]
-//               }
-//             ]
-//           }
-//         ]
-//       ]
-//     }
-//   }
-// }
