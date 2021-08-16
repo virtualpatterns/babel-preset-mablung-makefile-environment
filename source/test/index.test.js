@@ -1,10 +1,9 @@
-import { createRequire as CreateRequire } from 'module'
 import Babel from '@babel/core'
 import Test from 'ava'
 
 import { Package } from './library/package.js'
 
-const Require = CreateRequire(import.meta.url)
+const Require = __require
 
 Test('source/index.cjs', async (test) => {
 
