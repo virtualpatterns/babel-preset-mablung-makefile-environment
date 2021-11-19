@@ -11,6 +11,8 @@ module.exports = function (api, option) {
   //       "@virtualpatterns/babel-preset-mablung-makefile",
   //       {
   //         "header": {
+  //           "content": [
+  //           ],
   //           "exclude": [
   //           ]
   //         }
@@ -78,6 +80,12 @@ module.exports = function (api, option) {
   exclude = Is.array(exclude) ? exclude : [ exclude ]
 
   configuration.presets[0][1].header.exclude = exclude
+
+  let content = null
+  content = option.header?.content || ['!npx mablung-makefile-environment get-header']
+  content = Is.array(content) ? content : [ content ]
+
+  configuration.presets[0][1].header.content = content
 
   return configuration
 

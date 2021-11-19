@@ -4,8 +4,10 @@
       "@virtualpatterns/babel-preset-mablung-makefile",
       {
         "header": {
+          "content": [
+            "!node get-header.js"
+          ],
           "exclude": [
-            "source/header",
             "source/sandbox",
             "source/test"
           ]
