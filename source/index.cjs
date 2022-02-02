@@ -7,20 +7,31 @@ module.exports = function (api, option) {
 
   // {
   //   "presets": [
-  //     [
-  //       "@virtualpatterns/babel-preset-mablung-makefile",
-  //       {
-  //         "header": {
-  //           "content": [
-  //           ],
-  //           "exclude": [
-  //           ]
-  //         }
-  //       }
-  //     ]
+  //     "@virtualpatterns/babel-preset-mablung-makefile"
   //   ],
-  //   "env": {
-  //     "commonjs": {
+  //     "overrides": [
+  //       {
+  //         "include": [
+  //         ],
+  //         "plugins": [
+  //           [
+  //             "@virtualpatterns/babel-plugin-mablung-replace-identifier",
+  //             {
+  //             }
+  //           ]
+  //         ]
+  //       }
+  //     ],
+  //       "plugins": [
+  //         "@babel/plugin-syntax-import-meta",
+  //         [
+  //           "@virtualpatterns/babel-plugin-mablung-replace-identifier",
+  //           {
+  //           }
+  //         ]
+  //       ],
+  //         "env": {
+  //     "from-esmodule-to-commonjs": {
   //       "plugins": [
   //         [
   //           "@virtualpatterns/babel-plugin-mablung-replace-identifier",
@@ -33,59 +44,44 @@ module.exports = function (api, option) {
   //           }
   //         ]
   //       ],
-  //       "presets": [
+  //         "presets": [
   //           [
   //             "@babel/preset-env",
   //             {
   //             }
   //           ]
   //         ]
-  //     },
-  //     "esmodule": {
-  //       "plugins": [
-  //         "@babel/plugin-syntax-import-meta",
-  //         [
-  //           "@virtualpatterns/babel-plugin-mablung-replace-identifier",
-  //           {
-  //           }
-  //         ]
-  //       ]
   //     }
   //   }
   // }
-
-  let path = Path.resolve(`${__dirname}/../babel.config.json`)
+  
+  let path = Path.resolve(__dirname, '../babel.config.json')
   let configuration = FileSystem.readJsonSync(path, { 'encoding': 'utf-8' })
 
-  Assert.strictEqual(configuration.presets[0][0], '@virtualpatterns/babel-preset-mablung-makefile')
-  configuration.presets[0][0] = require('@virtualpatterns/babel-preset-mablung-makefile')
+  // preset
+  Assert.strictEqual(configuration.presets[0], '@virtualpatterns/babel-preset-mablung-makefile')
+  configuration.presets[0] = require(configuration.presets[0])
 
-  Assert.strictEqual(configuration.env.commonjs.plugins[0][0], '@virtualpatterns/babel-plugin-mablung-replace-identifier')
-  configuration.env.commonjs.plugins[0][0] = require('@virtualpatterns/babel-plugin-mablung-replace-identifier')
+  // overrides
+  Assert.strictEqual(configuration.overrides[0].plugins[0][0], '@virtualpatterns/babel-plugin-mablung-replace-identifier')
+  configuration.overrides[0].plugins[0][0] = require(configuration.overrides[0].plugins[0][0])
 
-  Assert.strictEqual(configuration.env.commonjs.plugins[1][0], '@virtualpatterns/babel-plugin-mablung-replace-string-literal')
-  configuration.env.commonjs.plugins[1][0] = require('@virtualpatterns/babel-plugin-mablung-replace-string-literal')
+  // default plugin
+  Assert.strictEqual(configuration.plugins[0], '@babel/plugin-syntax-import-meta')
+  configuration.plugins[0] = require(configuration.plugins[0])
 
-  Assert.strictEqual(configuration.env.commonjs.presets[0][0], '@babel/preset-env')
-  configuration.env.commonjs.presets[0][0] = require('@babel/preset-env')
+  Assert.strictEqual(configuration.plugins[1][0], '@virtualpatterns/babel-plugin-mablung-replace-identifier')
+  configuration.plugins[1][0] = require(configuration.plugins[1][0])
 
-  Assert.strictEqual(configuration.env.esmodule.plugins[0], '@babel/plugin-syntax-import-meta')
-  configuration.env.esmodule.plugins[0] = require('@babel/plugin-syntax-import-meta')
+  // env from-esmodule-to-commonjs
+  Assert.strictEqual(configuration.env['from-esmodule-to-commonjs'].plugins[0][0], '@virtualpatterns/babel-plugin-mablung-replace-identifier')
+  configuration.env['from-esmodule-to-commonjs'].plugins[0][0] = require(configuration.env['from-esmodule-to-commonjs'].plugins[0][0])
 
-  Assert.strictEqual(configuration.env.esmodule.plugins[1][0], '@virtualpatterns/babel-plugin-mablung-replace-identifier')
-  configuration.env.esmodule.plugins[1][0] = require('@virtualpatterns/babel-plugin-mablung-replace-identifier')
-  
-  let exclude = null
-  exclude = option.header?.exclude || []
-  exclude = Is.array(exclude) ? exclude : [ exclude ]
+  Assert.strictEqual(configuration.env['from-esmodule-to-commonjs'].plugins[1][0], '@virtualpatterns/babel-plugin-mablung-replace-string-literal')
+  configuration.env['from-esmodule-to-commonjs'].plugins[1][0] = require(configuration.env['from-esmodule-to-commonjs'].plugins[1][0])
 
-  configuration.presets[0][1].header.exclude = exclude
-
-  let content = null
-  content = option.header?.content || ['!npx mablung-makefile-environment get-header']
-  content = Is.array(content) ? content : [ content ]
-
-  configuration.presets[0][1].header.content = content
+  Assert.strictEqual(configuration.env['from-esmodule-to-commonjs'].presets[0][0], '@babel/preset-env')
+  configuration.env['from-esmodule-to-commonjs'].presets[0][0] = require(configuration.env['from-esmodule-to-commonjs'].presets[0][0])
 
   return configuration
 
