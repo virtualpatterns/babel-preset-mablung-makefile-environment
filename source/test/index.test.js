@@ -2,8 +2,6 @@ import Babel from '@babel/core'
 import Path from 'path'
 import Test from 'ava'
 
-// import { Package } from '../library/package.js'
-
 const FilePath = __filePath
 const Resolve = __resolve
 
@@ -188,9 +186,9 @@ Test('index.js using __resolve', async (test) => {
   }
 
   let { code: actualCodeOut } = await Babel.transformAsync(codeIn, option)
-  let expectedCodeOut = 'import { createRequire as _createRequire } from "module";\n' +
+  let expectedCodeOut = 'import _URL from "url";\n' +
                         'export function GetFilePath() {\n' +
-                        '  return ((...argument) => Promise.resolve(_createRequire(import.meta.url).resolve(...argument)))(\'./index.js\');\n' +
+                        '  return ((...argument) => import.meta.resolve(...argument).then(url => _URL.fileURLToPath(url)))(\'./index.js\');\n' +
                         '}'
 
   // test.log(actualCodeOut)
