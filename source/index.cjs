@@ -1,7 +1,7 @@
-const Assert = require('assert')
-const FileSystem = require('fs-extra')
-const Is = require('@pwn/is')
-const Path = require('path')
+import Assert from 'assert'
+import FileSystem from 'fs-extra'
+import Json from 'json5'
+import Path from 'path'
 
 module.exports = function (api, option) {
 
@@ -54,9 +54,8 @@ module.exports = function (api, option) {
   //     }
   //   }
   // }
-  
-  let path = Path.resolve(__dirname, '../babel.config.json')
-  let configuration = FileSystem.readJsonSync(path, { 'encoding': 'utf-8' })
+
+  let configuration = Json.parse(FileSystem.readFileSync(Path.resolve(__dirname, '../babel.config.json'), { 'encoding': 'utf-8' }))
 
   // preset
   Assert.strictEqual(configuration.presets[0], '@virtualpatterns/babel-preset-mablung-makefile')
