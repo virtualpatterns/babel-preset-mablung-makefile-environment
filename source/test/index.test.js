@@ -15,7 +15,7 @@ Test('index.cjs', async (test) => {
     'root': SourceFolderPath,
     'filename': Path.resolve(SourceFolderPath, 'index.cjs'),
     'presets': [
-      await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment')
+      '@virtualpatterns/babel-preset-mablung-makefile-environment'
     ]
   }
 
@@ -41,7 +41,7 @@ Test('index.cjs using __filePath', async (test) => {
     'root': SourceFolderPath,
     'filename': Path.resolve(SourceFolderPath, 'index.cjs'),
     'presets': [
-      await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment')
+      '@virtualpatterns/babel-preset-mablung-makefile-environment'
     ]
   }
 
@@ -67,7 +67,7 @@ Test('index.cjs using __folderPath', async (test) => {
     'root': SourceFolderPath,
     'filename': Path.resolve(SourceFolderPath, 'index.cjs'),
     'presets': [
-      await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment')
+      '@virtualpatterns/babel-preset-mablung-makefile-environment'
     ]
   }
 
@@ -93,7 +93,7 @@ Test('index.cjs using __resolve', async (test) => {
     'root': SourceFolderPath,
     'filename': Path.resolve(SourceFolderPath, 'index.cjs'),
     'presets': [
-      await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment')
+      '@virtualpatterns/babel-preset-mablung-makefile-environment'
     ]
   }
 
@@ -121,7 +121,7 @@ Test('index.js', async (test) => {
     'root': SourceFolderPath,
     'filename': Path.resolve(SourceFolderPath, 'index.js'),
     'presets': [
-      await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment')
+      '@virtualpatterns/babel-preset-mablung-makefile-environment'
     ]
   }
 
@@ -140,7 +140,7 @@ Test('index.js using __filePath', async (test) => {
     'root': SourceFolderPath,
     'filename': Path.resolve(SourceFolderPath, 'index.js'),
     'presets': [
-      await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment')
+      '@virtualpatterns/babel-preset-mablung-makefile-environment'
     ]
   }
 
@@ -160,7 +160,7 @@ Test('index.js using __folderPath', async (test) => {
     'root': SourceFolderPath,
     'filename': Path.resolve(SourceFolderPath, 'index.js'),
     'presets': [
-      await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment')
+      '@virtualpatterns/babel-preset-mablung-makefile-environment'
     ]
   }
 
@@ -181,7 +181,7 @@ Test('index.js using __resolve', async (test) => {
     'root': SourceFolderPath,
     'filename': Path.resolve(SourceFolderPath, 'index.js'),
     'presets': [
-      await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment')
+      '@virtualpatterns/babel-preset-mablung-makefile-environment'
     ]
   }
 
@@ -204,7 +204,7 @@ Test('index.js using from-esmodule-to-commonjs', async (test) => {
     'filename': Path.resolve(SourceFolderPath, 'index.js'),
     'envName': 'from-esmodule-to-commonjs',
     'presets': [
-      await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment')
+      '@virtualpatterns/babel-preset-mablung-makefile-environment'
     ]
   }
 
@@ -231,7 +231,7 @@ Test('index.js using from-esmodule-to-commonjs and __filePath', async (test) => 
     'filename': Path.resolve(SourceFolderPath, 'index.js'),
     'envName': 'from-esmodule-to-commonjs',
     'presets': [
-      await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment')
+      '@virtualpatterns/babel-preset-mablung-makefile-environment'
     ]
   }
 
@@ -258,7 +258,7 @@ Test('index.js using from-esmodule-to-commonjs and __folderPath', async (test) =
     'filename': Path.resolve(SourceFolderPath, 'index.js'),
     'envName': 'from-esmodule-to-commonjs',
     'presets': [
-      await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment')
+      '@virtualpatterns/babel-preset-mablung-makefile-environment'
     ]
   }
 
@@ -285,7 +285,7 @@ Test('index.js using from-esmodule-to-commonjs and __resolve', async (test) => {
     'filename': Path.resolve(SourceFolderPath, 'index.js'),
     'envName': 'from-esmodule-to-commonjs',
     'presets': [
-      await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment')
+      '@virtualpatterns/babel-preset-mablung-makefile-environment'
     ]
   }
 
@@ -315,7 +315,7 @@ Test('index.js using from-esmodule-to-commonjs and __resolve', async (test) => {
 //     'filename': Path.resolve(SourceFolderPath, 'index.cjs'),
 //     'presets': [
 //       [
-//         await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment'),
+//         '@virtualpatterns/babel-preset-mablung-makefile-environment',
 //         {
 //           'header': {
 //             'exclude': Path.resolve(SourceFolderPath, 'index.cj')`
@@ -348,7 +348,7 @@ Test('index.js using from-esmodule-to-commonjs and __resolve', async (test) => {
 //     'filename': Path.resolve(SourceFolderPath, 'index.js'),
 //     'presets': [
 //       [
-//         await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment'),
+//         '@virtualpatterns/babel-preset-mablung-makefile-environment',
 //         {
 //           'header': {
 //             'exclude': [
@@ -376,7 +376,7 @@ Test('index.js using from-esmodule-to-commonjs and __resolve', async (test) => {
 //     'filename': Path.resolve(SourceFolderPath, 'index.js'),
 //     'presets': [
 //       [
-//         await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment'),
+//         '@virtualpatterns/babel-preset-mablung-makefile-environment',
 //         {
 //           'header': {
 //             'content': '...'
@@ -406,7 +406,7 @@ Test('index.js using from-esmodule-to-commonjs and __resolve', async (test) => {
 //     'filename': Path.resolve(SourceFolderPath, 'index.js'),
 //     'presets': [
 //       [
-//         await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment'),
+//         '@virtualpatterns/babel-preset-mablung-makefile-environment',
 //         {
 //           'header': {
 //             'content': [
@@ -438,7 +438,7 @@ Test('index.js using from-esmodule-to-commonjs and __resolve', async (test) => {
 //     'filename': Path.resolve(SourceFolderPath, 'index.cjs'),
 //     'presets': [
 //       [
-//         await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment'),
+//         '@virtualpatterns/babel-preset-mablung-makefile-environment',
 //         {
 //           'header': {
 //             'exclude': Path.resolve(SourceFolderPath, 'index.cj')`
@@ -471,7 +471,7 @@ Test('index.js using from-esmodule-to-commonjs and __resolve', async (test) => {
 //     'filename': Path.resolve(SourceFolderPath, 'index.cjs'),
 //     'presets': [
 //       [
-//         await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment'),
+//         '@virtualpatterns/babel-preset-mablung-makefile-environment',
 //         {
 //           'header': {
 //             'exclude': Path.resolve(SourceFolderPath, 'index.cj')`
@@ -504,7 +504,7 @@ Test('index.js using from-esmodule-to-commonjs and __resolve', async (test) => {
 //     'filename': Path.resolve(SourceFolderPath, 'index.cjs'),
 //     'presets': [
 //       [
-//         await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment'),
+//         '@virtualpatterns/babel-preset-mablung-makefile-environment',
 //         {
 //           'header': {
 //             'exclude': Path.resolve(SourceFolderPath, 'index.cj')`
@@ -539,7 +539,7 @@ Test('index.js using from-esmodule-to-commonjs and __resolve', async (test) => {
 //     'filename': Path.resolve(SourceFolderPath, 'index.js'),
 //     'presets': [
 //       [
-//         await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment'),
+//         '@virtualpatterns/babel-preset-mablung-makefile-environment',
 //         {
 //           'header': {
 //             'exclude': Path.resolve(SourceFolderPath, 'index.j')`
@@ -568,7 +568,7 @@ Test('index.js using from-esmodule-to-commonjs and __resolve', async (test) => {
 //     'filename': Path.resolve(SourceFolderPath, 'index.js'),
 //     'presets': [
 //       [
-//         await Resolve('@virtualpatterns/babel-preset-mablung-makefile-environment'),
+//         '@virtualpatterns/babel-preset-mablung-makefile-environment',
 //         {
 //           'header': {
 //             'exclude': Path.resolve(SourceFolderPath, 'index.j')`
