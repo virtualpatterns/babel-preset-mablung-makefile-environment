@@ -22,16 +22,16 @@
     "@babel/core": "^7.17.5",
     "@babel/plugin-syntax-import-meta": "^7.10.4",
     "@babel/preset-env": "^7.16.11",
-    "@virtualpatterns/babel-plugin-mablung-replace-identifier": "0.0.26-74",
-    "@virtualpatterns/babel-plugin-mablung-replace-string-literal": "0.0.26-72",
-    "@virtualpatterns/babel-preset-mablung-makefile": "0.0.26-130",
+    "@virtualpatterns/babel-plugin-mablung-replace-identifier": "0.0.26-76",
+    "@virtualpatterns/babel-plugin-mablung-replace-string-literal": "0.0.26-74",
+    "@virtualpatterns/babel-preset-mablung-makefile": "0.0.26-132",
     "fs-extra": "^10.0.1",
     "json5": "^2.2.0"
   },
   "devDependencies": {
-    "@virtualpatterns/eslint-config-mablung-makefile": "0.0.26-125",
-    "@virtualpatterns/mablung-check-dependency": "0.0.26-105",
-    "@virtualpatterns/mablung-makefile-environment": "^0.0.26-68",
+    "@virtualpatterns/eslint-config-mablung-makefile": "0.0.26-127",
+    "@virtualpatterns/mablung-check-dependency": "0.0.26-107",
+    "@virtualpatterns/mablung-makefile-environment": "^0.0.26-70",
     "ava": "^4.0.1",
     "shx": "^0.3.4"
   }
