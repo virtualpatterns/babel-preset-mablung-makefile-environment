@@ -2,11 +2,8 @@ import Babel from '@babel/core'
 import Path from 'path'
 import Test from 'ava'
 
-const FilePath = __filePath
-const Resolve = __resolve
-
-const SourceFilePath = FilePath.replace('/release/', '/source/')
-const SourceFolderPath = Path.dirname(SourceFilePath)
+const ReleaseFolderPath = __folderPath
+const SourceFolderPath = ReleaseFolderPath.replace('/release/', '/source/')
 
 Test('index.cjs', async (test) => {
 
