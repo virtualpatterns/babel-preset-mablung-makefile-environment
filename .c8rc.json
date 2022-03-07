@@ -1,8 +1,8 @@
 {
   "all": true,
   "exclude": [
-    "release/sandbox",
-    "ava.config.js"
+    "ava.config.js",
+    "release/sandbox"
   ],
   "reportDir": "data/c8", 
   "reporter": [
